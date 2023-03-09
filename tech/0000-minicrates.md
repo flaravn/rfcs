@@ -33,6 +33,7 @@ bevy = {} # if bevy is already present in the parent's manifest
 
 Flara will not force you into making the parent crate to be a `dynlib`, but it's maybe good to load them, and many other crates, as a dynamic library instead of statically link them into the minicrate.
 
+## Build steps
 Now, we have to make Flara build steps running. 
 Install `minicrates` as a build dependency.
 ```sh
@@ -50,6 +51,8 @@ fn main()
 ```
 
 `minicrates::build` returns `HashMap<PathBuf, PathBuf>`. The key is the original path, and the value is the output crate path.
+
+## Accessing from non-build script Rust code
 You can access them in non-build Rust code by writing this in `build.rs`:
 ```rs
 let result = minicrates::build("./stories").unwrap();
@@ -67,6 +70,8 @@ You can look it up with:
 ```rs
 minicrate!("./path-to/minicrate.mini.rs")
 ```
+
+By the way, if you want to use the macros in non-build Rust code, that means you also have to install `minicrates` as a normal dependency.
 
 # Reference-level explanation
 [reference-level-explanation]: #reference-level-explanation
