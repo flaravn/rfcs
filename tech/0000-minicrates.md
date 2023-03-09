@@ -32,10 +32,6 @@ parent = {} # you can depend on the parent crate too
 
 Flara will not force you into making the parent crate to be a `dynlib`, but it's maybe good to load them, and many other crates, as a dynamic library instead of statically link them into the minicrate.
 
-## `cfg!()` directives
-We can have a cfg directive too! If we're inside  minicrate, cfg!(minicrate) should be true. **However, I haven't been able to find any use cases for this.**
-So they don't have to be implemented for now.
-
 # Reference-level explanation
 [reference-level-explanation]: #reference-level-explanation
 
@@ -78,8 +74,14 @@ Please also take into consideration that rust sometimes intentionally diverges f
 - What parts of the design do you expect to resolve through the implementation of this feature before stabilization?
 - What related issues do you consider out of scope for this RFC that could be addressed in the future independently of the solution that comes out of this RFC?
 
+## `cfg!()` directives
+We can have a cfg directive too! If we're inside  minicrate, cfg!(minicrate) should be true. **However, I haven't been able to find any use cases for this.**
+So they don't have to be implemented for now.
+
 # Future possibilities
 [future-possibilities]: #future-possibilities
+
+
 
 Think about what the natural extension and evolution of your proposal would
 be and how it would affect the language and project as a whole in a holistic
