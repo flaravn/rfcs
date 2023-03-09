@@ -22,8 +22,9 @@ Minicrates enable better developer experience and productivity, by not having to
 # Guide-level explanation
 [guide-level-explanation]: #guide-level-explanation
 Hii! Do you want to create a minicrate? It's quite easy.
-Just create a new file with the `.mini.rs` extension.
+Just create a new file with the `.mini.rs` extension!
 
+You can adjust the Cargo manifest settings of the minicrates by writing something like this:
 ```toml
 [flara.minicrates "**/*"] # accept any kind of glob expressions
 framework = { path = "./framework" } # path relative to the parent's Cargo.toml manifest
@@ -48,6 +49,20 @@ fn main()
    minicrates::build("./stories").unwrap() // change the path to somewhere!
   // ...
   
+```
+Now all minicrates inside of stories will be built by Cargo.
+
+Usually, you will end up with something like this:
+```
+Cargo.toml
+build.rs
+stories/
+   events/
+      never_ending_distance/
+          in_the_trains.mini.rs 
+          in_my_house.mini.rs
+src/
+    // your Rust source code
 ```
 
 `minicrates::build` returns `HashMap<PathBuf, PathBuf>`. The key is the original path, and the value is the output crate path.
