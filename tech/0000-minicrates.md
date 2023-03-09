@@ -7,7 +7,7 @@
 
 A minicrate is a module that is not statically linked to the parent crate, but rather built individually as a dynamic library that can be later loaded by the parent crate through many means such as:
 - trough the `dlopen` crate
-- trough WebAssembly, which is the only way to do this on systems where W^X security policies are enabled ([Android >=SDK29 (Android >=10)](https://developer.android.com/about/versions/10/behavior-changes-10#execute-permission), Apple systems, and proprieritary gaming consoles)
+- trough WebAssembly, which is the only way to do this on systems where W^X security policies are enabled ([Android >=SDK29 (Android >=10)](https://developer.android.com/about/versions/10/behavior-changes-10#execute-permission), (Apple Silicon MacOS)[https://developer.apple.com/documentation/apple-silicon/porting-just-in-time-compilers-to-apple-silicon], proprieritary gaming consoles, and many others.
 
 # Motivation
 [motivation]: #motivation
