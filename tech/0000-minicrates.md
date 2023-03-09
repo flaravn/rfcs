@@ -1,4 +1,4 @@
-- Feature Name: **"Dynamic minicrates" infrastructure for Flara story modules*
+- Feature Name: **"Dynamic minicrates" infrastructure for Flara story modules**
 - Start Date: 2023-03-09
 - RFC PR: [project-flara/flarastory-open-rfcs#0000](https://github.com/project-flara/flarastory-open-rfcs/pulls/0000)
 
