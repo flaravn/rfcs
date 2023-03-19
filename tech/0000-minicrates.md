@@ -5,7 +5,7 @@
 # Summary
 [summary]: #summary
 
-A minicrate is a module that is not statically linked to the parent crate, but rather built individually as a dynamic library that can be later loaded by the parent crate through many means such as:
+A minicrate is a module that is not statically linked to the parent crate, like normal modules normally do, but rather built individually as a dynamic library that can be later loaded by the parent crate through many means such as:
 - trough the `dlopen` crate
 - trough WebAssembly, which is the only way to do this on systems where W^X security policies are enabled ([Android >=SDK29 (Android >=10)](https://developer.android.com/about/versions/10/behavior-changes-10#execute-permission), [Apple Silicon MacOS](https://developer.apple.com/documentation/apple-silicon/porting-just-in-time-compilers-to-apple-silicon), proprieritary gaming consoles, and many others.
 
@@ -17,8 +17,9 @@ A commercial narrative-based gacha video games use a LOT of dialog files. I'm no
 Project Sekai's Japanese release for instance has 87 events. Each events usually have 8-10 episodes inside. There are also the group stories.
 There's a reason why they download dialog assets on demand, if I am correct.
 
+Without minicrates, we would have to create a ton of crates and set "dylib" to them.
+
 It wouldn't make sense to run `cargo new` and add dependencies to all of them. Seems too much boilerplate work.
-It doesn't make sense to include them in the main binary either.
 
 Minicrates enable better developer experience and productivity, by not having to do that.
 # Guide-level explanation
