@@ -28,10 +28,18 @@ Just create a new file with the `.mini.rs` extension!
 
 You can adjust the Cargo manifest settings of the minicrates by writing something like this:
 ```toml
-[flara.minicrates "**/*"] # accept any kind of glob expressions
-framework = { path = "./framework" } # path relative to the parent's Cargo.toml manifest
+
+[minicrates."**/*".dependencies]
+framework = { version = "0.1.0", path = "./framework" }
 parent = {} # you can depend on the parent crate too
-bevy = {} # if bevy is already present in the parent's manifest
+bevy = {} # if bevy is already present in the parent's manifest, you don't have to specify the version
+
+[minicrates."**/*".package]
+version = "0.1.0" # this is also not required, will default to the parent crate's version
+
+[minicrates."**/*".package.metadata]
+hii = true
+
 ```
 
 Flara will not force you into making the parent crate to be a `dynlib`, but it's maybe good to load them, and many other crates, as a dynamic library instead of statically link them into the minicrate.
