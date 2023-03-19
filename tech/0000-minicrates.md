@@ -15,7 +15,7 @@ A minicrate is a module that is not statically linked to the parent crate, like 
 A commercial narrative-based gacha video games use a LOT of dialog files. I'm not sure how many we'll use once Project Flara can release its own indie titles, but I want them to be quite long I guess.
 
 Project Sekai's Japanese release for instance has 87 events. Each events usually have 8-10 episodes inside. There are also the group stories.
-There's a reason why they download dialog assets on demand, if I am correct.
+There's a reason why they download dialog assets on demand, if I am correct. That is also what we're going for visual novels that use Project Flara, unless if they're not that much a big of a deal.
 
 Without minicrates, we would have to create a ton of crates and set "dylib" to them.
 
