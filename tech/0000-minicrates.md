@@ -48,11 +48,27 @@ Then go to your `build.rs` file and add
 
 fn main()
   // ...
-   minicrates::build("./stories").unwrap() // change the path to somewhere!
+   minicrates::BuildOptions {
+        no_minicrates: Some(Box::new(|| {
+            println!("Nothing to build."); // costumizable behavior
+            exit(0);
+        })),
+    }
+    .build(&format!(
+        "{}/story/**/*.mini.rs",
+        env::var("CARGO_MANIFEST_DIR").unwrap()
+    )).unwrap(); // change the path to somewhere! but this is just how we're going to use it in Flara.
   // ...
   
 ```
-Now all minicrates inside of stories will be built by Cargo.
+Then add the minicrates folder into your workspace configuration!
+```toml
+
+[workspace]
+members = ["minicrates/*"
+]
+```
+Now all minicrates inside of `stories` will be built by Cargo!
 
 Usually, you will end up with something like this:
 ```
@@ -67,12 +83,12 @@ src/
     // your Rust source code
 ```
 
-`minicrates::build` returns `HashMap<PathBuf, PathBuf>`. The key is the original path, and the value is the output crate path.
+`BuildOptions::buil()` returns `HashMap<PathBuf, PathBuf>`. The key is the original path, and the value is the output crate path.
 
 ## Accessing from non-build script Rust code
 You can access them in non-build Rust code by writing this in `build.rs`:
 ```rs
-let result = minicrates::build("./stories").unwrap();
+let result = options::build("./stories").unwrap();
 minicrates::export(result);
 ```
 
@@ -104,6 +120,8 @@ The crates will be linked to a main output crate that will be the crate listed a
 There are some drawbacks to using `include!`.
 
 > Using this macro is often a bad idea, because if the file is parsed as an expression, it is going to be placed in the surrounding code unhygienically. This could result in variables or functions being different from what the file expected if there are variables or functions that have the same name in the current file.
+
+But, the default configuration only writes `include!` and nothing else, so this is irrelevant.
 
 # Rationale and alternatives
 [rationale-and-alternatives]: #rationale-and-alternatives
