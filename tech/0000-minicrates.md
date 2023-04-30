@@ -115,6 +115,8 @@ minicrate!("./path-to/minicrate.mini.rs")
 
 By the way, if you want to use the macros in non-build Rust code, that means you also have to install `minicrates` as a normal dependency.
 
+Additionally, the API isn't a strict requirement, the actual implementation API may differ from this one.
+
 # Reference-level explanation
 [reference-level-explanation]: #reference-level-explanation
 
